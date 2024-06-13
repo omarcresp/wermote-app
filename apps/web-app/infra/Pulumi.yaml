@@ -1,0 +1,8 @@
+name: wermote
+runtime: nodejs
+description: wermote app
+config:
+  wermote:appName: wermote
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
