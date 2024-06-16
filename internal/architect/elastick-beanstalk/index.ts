@@ -43,7 +43,7 @@ export async function createEBStack({
   const ebVersion = new aws.elasticbeanstalk.ApplicationVersion(
     `version-${env}-${appName}`,
     {
-      name: "manuella-5",
+      name: process.env.VERSION,
       application: ebApp,
       bucket,
       key: (await versionObject).key,
