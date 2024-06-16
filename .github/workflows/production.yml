@@ -18,3 +18,5 @@ jobs:
         cache: 'yarn'
     - run: corepack enable
     - run: yarn install
+    - run: yarn lerna run build:ci
+    - run: yarn lerna run deploy:ci
