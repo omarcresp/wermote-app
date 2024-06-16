@@ -1,0 +1,10 @@
+{
+    "name": "@wermote/api-gateway",
+    "version": "1.0.0",
+    "scripts": {
+        "deploy-offline": "cd infra; pulumi stack select $ENV; pulumi up --skip-preview"
+    },
+    "dependencies": {
+        "@wermote/architect": "^1.0.0"
+    }
+}

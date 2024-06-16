@@ -1,0 +1,8 @@
+name: api-gateway
+runtime: nodejs
+description: API Gateway for wermote microservices
+config:
+  api-gateway:appName: api-gateway
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript

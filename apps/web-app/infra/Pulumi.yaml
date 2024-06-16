@@ -1,8 +1,9 @@
-name: wermote
+name: web-app
 runtime: nodejs
-description: wermote app
+description: wermote web app
 config:
-  wermote:appName: wermote
+  aws:region: us-east-1
+  web-app:appName: web
   pulumi:tags:
     value:
       pulumi:template: aws-typescript

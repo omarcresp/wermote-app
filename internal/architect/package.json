@@ -1,0 +1,8 @@
+{
+  "name": "@wermote/architect",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "dependencies": {
+    "ofetch": "^1.3.4"
+  }
+}
