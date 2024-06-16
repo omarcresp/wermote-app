@@ -17,6 +17,7 @@ jobs:
     - run: corepack enable
     - run: yarn install
     - run: yarn lerna run build:ci
+    - name: Deploy with pulumi
       run: yarn lerna run deploy:ci
       env:
         ENV: ${{ vars.ENV }}
