@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as cloudflare from "@pulumi/cloudflare";
-import { Application } from "@pulumi/aws/elasticbeanstalk";
 
 interface DNSRecordOptions {
   appName: string;

@@ -22,7 +22,7 @@ export const ebApp = createEBApp({
   type: 'app',
 });
 
-const bucket = new aws.s3.Bucket(`app-${env}-${appName}`);
+const bucket = new aws.s3.Bucket(`${env}-${appName}-app`);
 
 const distPath = path.resolve(__dirname, '../dist');
 const serverPath = path.resolve(distPath, 'web-app/server');
