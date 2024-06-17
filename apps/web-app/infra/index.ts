@@ -24,8 +24,7 @@ export const ebApp = createEBApp({
 
 const bucket = new aws.s3.Bucket(`${env}-${appName}-app`);
 
-const distPath = path.resolve(__dirname, '../dist');
-const serverPath = path.resolve(distPath, 'web-app/server');
+const serverPath = path.resolve(__dirname, '../dist/web-app');
 
 const serverFiles = fs
   .readdirSync(serverPath)

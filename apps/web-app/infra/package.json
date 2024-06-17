@@ -2,6 +2,6 @@
   "name": "@wermote/web-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server/server.mjs"
   }
 }

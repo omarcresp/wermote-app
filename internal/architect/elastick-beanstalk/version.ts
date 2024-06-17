@@ -24,8 +24,12 @@ export async function createEBVersion({
   const zip = new zl.Zip();
 
   filesList.forEach((file) => {
-    if (fs.lstatSync(file).isDirectory()) zip.addFolder(file);
-    else zip.addFile(file);
+    if (fs.lstatSync(file).isDirectory()) {
+      const folderName = file.split('/').pop()
+      zip.addFolder(file, folderName);
+    } else {
+      zip.addFile(file);
+    }
   });
 
   const zipFile = path.resolve(__dirname, `../dist/${appName}_${env}.zip`);
