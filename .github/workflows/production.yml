@@ -17,25 +17,6 @@ jobs:
       with:
         node-version: '20'
         cache: 'yarn'
-    - run: echo "PRIOR_COMMIT=$(git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}')" >> $GITHUB_ENV
-    - name: Get second hash
-      run: |
-        git rev-list --parents -n 1 $GITHUB_SHA > temp.txt
-        cat temp.txt
-        SECOND_HASH=$(awk '{print $2}' temp.txt)
-        echo "The second hash is: $SECOND_HASH"
-        # Optionally, export the variable to be used in subsequent steps
-        echo "SECOND_HASH=$SECOND_HASH" >> $GITHUB_ENV
-        rm temp.txt
-    - name: Use the second hash
-      run: echo $SECOND_HASH
-      env:
-        SECOND_HASH: ${{ env.SECOND_HASH }}
-    - name: Use prior commit
-      run: echo $PRIOR_COMMIT
-      env:
-        PRIOR_COMMIT: ${{ env.PRIOR_COMMIT }}
-    - run: sleep 30
     - run: corepack enable
     - run: yarn install
     - run: yarn lerna run build:ci --since $(git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}')
