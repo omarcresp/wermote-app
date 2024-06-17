@@ -6,19 +6,16 @@ interface DNSRecordOptions {
   appName: string;
   env: string;
   urlPrefix?: string;
-  ebStack: Promise<{
-    cname: pulumi.Output<string>;
-    ebApp: Application;
-  }>;
+  ebCname: Promise<pulumi.Output<string>>;
 }
 
 export async function createDNSRecord({
-  ebStack,
+  ebCname,
   appName,
   env,
   urlPrefix,
 }: DNSRecordOptions) {
-  const { cname } = await ebStack;
+  const cname = await ebCname;
 
   const route = ["wermote.xyz"];
   const rawPreffix: string[] = [];
