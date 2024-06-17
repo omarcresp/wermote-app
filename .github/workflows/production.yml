@@ -17,6 +17,8 @@ jobs:
     - run: corepack enable
     - run: yarn install
     - run: yarn lerna run build:ci
+    - run: echo $GITHUB_SHA
+    - run: sleep 30
     - name: Deploy with pulumi
       run: yarn lerna run deploy:ci --since $(git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}')
       env:
