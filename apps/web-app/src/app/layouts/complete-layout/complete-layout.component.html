@@ -1,0 +1,27 @@
+<header class="bg-weco-400 flex justify-between p-3">
+  <section>
+    <figure class="text-neutral-800 text-8xl">
+      <!-- TODO: Component to reuse icons -->
+      <svg role="img" width="1em" height="0.22em">
+        <use href="assets/icons.svg#logo"></use>
+      </svg>
+    </figure>
+  </section>
+  <nav class="text-weco-700 flex items-center">
+    <figure class="text-2xl">
+      <svg width="1em" height="1em" role="img">
+        <use href="assets/icons.svg#menu"></use>
+      </svg>
+    </figure>
+
+    <div class="w-px bg-weco-700 mx-3 h-full" role="separator"></div>
+
+    <figure [routerLink]="'/login'" class="text-2xl">
+      <svg width="1em" height="1em" role="img">
+        <use href="assets/icons.svg#profile"></use>
+      </svg>
+    </figure>
+  </nav>
+</header>
+
+<router-outlet />

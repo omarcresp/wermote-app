@@ -1,0 +1,6 @@
+<button [class]="baseStyles.concat(selectedStyles)">
+  <div [class]="baseIconStyles.concat(selectedIconStyles)" *ngIf="icon">
+    <app-icon [icon]="icon"></app-icon>
+  </div>
+  <p class="flex-1 text-center"><ng-content /></p>
+</button>

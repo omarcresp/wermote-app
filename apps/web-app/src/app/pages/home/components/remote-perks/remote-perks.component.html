@@ -1,0 +1,15 @@
+<section class="mt-12 px-6">
+  <h3 class="text-2xl font-semibold text-center text-neutral-900">
+    ¿Porqué te conviene cambiar tu lugar de trabajo?
+  </h3>
+
+  <div class="flex gap-6 mt-10" *ngFor="let perk of perks">
+    <img class="self-start mt-2 w-12" [src]="perk.img" alt="" />
+
+    <div class="flex-1">
+      <h5 class="text-xl mb-2 text-neutral-900">{{ perk.title }}</h5>
+
+      <p class="text-neutral-500 font-light">{{ perk.content }}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+.slider-simple {
+  display: grid;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
+  overflow: auto;
+  scrollbar-width: none;
+}

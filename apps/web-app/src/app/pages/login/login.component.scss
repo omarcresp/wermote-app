@@ -1,0 +1,17 @@
+.header-drawing {
+  width: 300vw;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  position: fixed;
+  background: #D9F2A5;
+  bottom: 72dvh;
+  transform: translateX(-33%);
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 4rem;
+}
+
+main {
+  padding-top: calc(16px + 28vh);
+}
