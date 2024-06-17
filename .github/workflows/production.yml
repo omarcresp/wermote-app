@@ -18,6 +18,7 @@ jobs:
     - name: Get second hash
       run: |
         git rev-list --parents -n 1 $GITHUB_SHA > temp.txt
+        cat temp.txt
         SECOND_HASH=$(awk '{print $2}' temp.txt)
         echo "The second hash is: $SECOND_HASH"
         # Optionally, export the variable to be used in subsequent steps
