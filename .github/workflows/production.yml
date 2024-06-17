@@ -15,6 +15,7 @@ jobs:
         node-version: '20'
         cache: 'yarn'
     - run: echo $(git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}')
+    - run: git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}'
     - run: sleep 30
     - run: corepack enable
     - run: yarn install
