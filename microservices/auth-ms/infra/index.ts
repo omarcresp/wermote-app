@@ -55,5 +55,5 @@ export const hostname = createDNSRecord({
   ebCname,
   env,
   appName,
-  urlPrefix: "ms-auth",
+  urlPrefix: appName,
 });
