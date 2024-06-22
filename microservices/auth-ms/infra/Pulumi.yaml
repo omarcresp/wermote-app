@@ -1,0 +1,8 @@
+name: auth-ms
+runtime: nodejs
+description: Auth microservice
+config:
+  auth-ms:appName: auth-ms
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
