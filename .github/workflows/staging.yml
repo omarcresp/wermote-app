@@ -1,9 +1,8 @@
-name: Production Deploy
+name: Staging Deploy
 
 on:
   push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -13,18 +12,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-tags: true
+        fetch-depth: 2
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'yarn'
     - run: corepack enable
     - run: yarn install
-    - run: yarn lerna run build:ci --since
+    - run: yarn lerna run build:ci --since $(git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}')
     - name: Deploy with pulumi
-      run: yarn lerna run deploy:ci --since
+      run: yarn lerna run deploy:ci --since $(git rev-list --parents -n 1 $GITHUB_SHA | awk '{print $2}')
       env:
-        ENV: prod
+        ENV: staging
+        VERSION: ${{ github.sha }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
