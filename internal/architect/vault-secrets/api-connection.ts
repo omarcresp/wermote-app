@@ -25,6 +25,7 @@ async function generateToken(): Promise<string> {
 const VAULT_PROJECTS: Record<string, string> = {
   prod: '2d109f11-6f8e-40bf-a201-e6eebc56d083',
   dev: 'e88a564f-3833-4709-b0b5-3c4d2344ea84',
+  staging: '09ecb942-8b07-4c04-9895-5a6c85b8f424',
 };
 
 export async function retrieveSecrets(appName: string, env: string) {
@@ -32,7 +33,7 @@ export async function retrieveSecrets(appName: string, env: string) {
 
   const hashiApi = 'https://api.cloud.hashicorp.com/secrets/2023-06-13';
   const orgId = 'e97c9086-24ef-4328-bb76-f6ba027cd240';
-  const projectId = VAULT_PROJECTS[env];
+  const projectId = VAULT_PROJECTS[env] ?? VAULT_PROJECTS.dev;
 
   const baseURL = `${hashiApi}/organizations/${orgId}/projects/${projectId}/`;
 
