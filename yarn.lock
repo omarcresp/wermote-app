@@ -2878,6 +2878,13 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
+"@pulumi/mongodbatlas@^3.16.2":
+  version "3.16.2"
+  resolved "https://registry.yarnpkg.com/@pulumi/mongodbatlas/-/mongodbatlas-3.16.2.tgz#3af1a7f6827508c80fd332e810fb6c7afacb23e1"
+  integrity sha512-9GDJmiOAv7AWnjTquXcDqHI1e651kV7hiCTWnDhstKacg97iJahSk2yezmNtaZu0oD2loME7HVQjGDjIwBfJQA==
+  dependencies:
+    "@pulumi/pulumi" "^3.0.0"
+
 "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.113.0", "@pulumi/pulumi@^3.120.0":
   version "3.120.0"
   resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.120.0.tgz#2d46585b365275975b263d842d1b9f8e7bd341de"

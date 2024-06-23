@@ -39,7 +39,7 @@ export const ebVersion = createEBVersion({
   filesList: projectFiles,
 });
 
-const appSecrets = retrieveSecrets(appName, env);
+const appSecrets = pulumi.output(retrieveSecrets(appName, env));
 
 export const ebCname = createEBEnvironment({
   ebApp,

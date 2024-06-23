@@ -10,6 +10,9 @@ import {
   createDNSRecord,
 } from "@wermote/architect/elastick-beanstalk";
 import { retrieveSecrets } from "@wermote/architect/vault-secrets";
+import { ISecret } from "@wermote/architect/vault-secrets/types";
+import { createServerlessDB } from "@wermote/architect/mongo";
+import { createSecret } from "@wermote/architect/vault-secrets/api-connection";
 
 const config = new pulumi.Config();
 
@@ -39,7 +42,13 @@ export const ebVersion = createEBVersion({
   filesList: projectFiles,
 });
 
-const appSecrets = retrieveSecrets(appName, env);
+const mongoSrv = createServerlessDB(`${env}-${appName}`);
+
+const appSecrets = mongoSrv.apply(async (mongoSecret) => {
+  await createSecret(appName, env, { name: "MONGO_SRV", value: mongoSecret });
+
+  return retrieveSecrets(appName, env);
+});
 
 export const ebCname = createEBEnvironment({
   ebApp,

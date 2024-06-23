@@ -13,7 +13,7 @@ interface EBEnvironmentOptions {
   appName: string;
   env: string;
   instanceType: ValidEC2InstanceTypes;
-  secrets: Promise<ISecret[]>;
+  secrets: pulumi.Output<ISecret[]>;
   solutionName: string;
   ebConfig?: pulumi.Input<aws.types.input.elasticbeanstalk.EnvironmentSetting>[];
   ebVersion: Promise<eb.ApplicationVersion>;
@@ -38,13 +38,16 @@ export async function createEBEnvironment({
     mostRecent: true,
   });
 
+  const pulumiSecrets = parseSecretEBS(secrets);
+
   const envName = `${env}-${appName}`;
   const ebEnvironment = new aws.elasticbeanstalk.Environment(envName, {
     name: envName,
     application: ebApp.name,
     solutionStackName: solutions.name,
     version: await ebVersion,
-    settings: [
+    settings: pulumiSecrets.apply((s) => [
+      ...s,
       {
         namespace: "aws:elasticbeanstalk:environment",
         name: "ServiceRole",
@@ -65,9 +68,8 @@ export async function createEBEnvironment({
         name: "InstanceType",
         value: instanceType,
       },
-      ...parseSecretEBS(await secrets),
       ...ebConfig,
-    ],
+    ]),
   });
 
   return ebEnvironment.cname;

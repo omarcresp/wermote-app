@@ -1,10 +1,12 @@
+import * as pulumi from "@pulumi/pulumi";
+
 export interface ISecretResponse {
   secrets: IVaultSecret[];
 }
 
 export interface ISecret {
   name: string;
-  value: string;
+  value: string | pulumi.Output<string>;
 }
 
 export interface IVaultSecret {
