@@ -3,12 +3,12 @@ import * as mongodbatlas from "@pulumi/mongodbatlas";
 import { genPass } from "../password-gen";
 
 export function createServerlessDB(clusterName: string) {
-  if (!process.env.MONGODB_PROJECT_ID)
+  if (!process.env['MONGODB_PROJECT_ID'])
     throw new Error("No project id found in env");
 
   const mongoPass = genPass(16);
   const mongoUser = new mongodbatlas.DatabaseUser(clusterName, {
-    projectId: process.env.MONGODB_PROJECT_ID,
+    projectId: process.env['MONGODB_PROJECT_ID'],
     username: clusterName,
     password: pulumi.secret(mongoPass),
     authDatabaseName: "admin",
